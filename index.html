@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>WebFreeze</title>
+  </head>
+  <body style="margin:0;padding:0;">
+    <div style="display:flex;flex-direction:column;align-items:stretch;position:absolute;left:0;right:0;top:0;bottom:0;">
+      <div style="height:40px;background-color:#fff;border-bottom:solid 1px #000;">
+        <input id="url" type="text" value="file:///git/webfreeze/test.html" style="padding:4px; border:solid 1px #bbb; font-size: 12px;margin-left:5px;margin-top:5px;outline:none;" />
+        <input type="button" value="load" onclick="handleLoad();" style="border:solid 1px #bbb;padding: 4px; margin-left: 5px; margin-top: 5px;cursor:pointer;background-color:#fff;"/>
+        <input type="button" value="freeze" onclick="handleFreeze();" style="border:solid 1px #bbb;padding: 4px; margin-left: 5px; margin-top: 5px;cursor:pointer;background-color:#fff;"/>
+      </div>
+      <webview 
+        id='webview'
+        preload='preload.js'
+        src='https://www.matthowlett.com'
+        style='width:100%;height:100%;flex-grow:1;'
+      >
+      </webview>
+    </div>
+    <script>
+      document.getElementById('webview').addEventListener("dom-ready", function() {
+        document.getElementById('webview').openDevTools();
+        console.log("opened");
+      });
+  
+      function handleFreeze() {
+        var wv = document.getElementById('webview');
+        wv.send('freezeDocument');        
+      }
+      
+      function handleLoad() {
+        var wv = document.getElementById('webview');
+        wv.src = document.getElementById('url').value;
+      }
+    </script>  
+      
+  </body>
+</html>

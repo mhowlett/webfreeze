@@ -1,0 +1,14 @@
+{
+  "name": "webfreeze",
+  "version": "1.0.0",
+  "description": "WebFreeze",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron main.js"
+  },
+  "author": "Matt Howlett",
+  "devDependencies": {
+    "electron-prebuilt": "^0.37.0",
+    "eslint": "^2.7.0"
+  }
+}
